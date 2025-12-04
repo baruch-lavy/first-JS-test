@@ -36,3 +36,4 @@ function showStats(player) {
 
     return ''
 }
+

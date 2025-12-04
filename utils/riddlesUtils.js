@@ -1,5 +1,5 @@
-import riddle1 from "../riddles/r1.js";
-import riddle2 from "../riddles/r2.js";
+import riddles from "../riddles/riddles.js";
+
 import input from "analiza-sync";
 
 export default {
@@ -59,5 +59,8 @@ function measureSolveTime(fn, argument, riddleNumber) {
   return minutesDiff * 60 + secondsDiff;
 }
 
-// measureSolveTime(printRiddle,riddle2)
-// printRiddle(riddle2);
+function sortRiddles(riddles) {
+  riddles.sort((a, b) => a.sort - b.sort)
+
+}
+
