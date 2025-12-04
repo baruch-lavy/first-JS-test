@@ -1,5 +1,3 @@
-import riddles from "../riddles/riddles.js";
-
 import input from "analiza-sync";
 
 export default {

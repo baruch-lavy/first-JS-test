@@ -22,7 +22,6 @@ function addSolveTime(player, seconds) {
     player.times.push(seconds)
 }
 
-
 function showStats(player) {
     const times = player.times
     const totalTime = times.reduce((acc,seconds) => {
