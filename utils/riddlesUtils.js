@@ -2,7 +2,14 @@ import riddle1 from "../riddles/r1.js";
 import riddle2 from "../riddles/r2.js";
 import input from "analiza-sync";
 
-function printRiddle(riddleObj) {
+export default {
+  printRiddle,
+  askRiddle,
+  measureSolveTime,
+};
+
+function printRiddle(riddleObj, riddleNumber) {
+  console.log(`Riddle ${riddleNumber}`);
   console.log(riddleObj.name);
   console.log(riddleObj.taskDescription);
 
@@ -29,7 +36,7 @@ function askRiddle(riddleObj) {
       }
     } else {
       const answerIdx = Number(riddleObj.correctAnswer);
-      if ((Number(answer) - 1) === answerIdx) {
+      if (Number(answer) - 1 === answerIdx) {
         console.log("Good Job");
         isCorrect = true;
       } else {
@@ -39,18 +46,18 @@ function askRiddle(riddleObj) {
   }
 }
 
-function  measureSolveTime(fn,argument) {
-    const startMinutes = new Date().getMinutes()
-    const startSeconds = new Date().getSeconds()
-    fn(argument)
-    const stopMinutes = new Date().getMinutes()
-    const stopSeconds = new Date().getSeconds()
+function measureSolveTime(fn, argument, riddleNumber) {
+  const startMinutes = new Date().getMinutes();
+  const startSeconds = new Date().getSeconds();
+  fn(argument, riddleNumber);
+  const stopMinutes = new Date().getMinutes();
+  const stopSeconds = new Date().getSeconds();
 
-    const minutesDiff = stopMinutes - startMinutes
-    const secondsDiff = stopSeconds - startSeconds
-    console.log((minutesDiff * 60) + secondsDiff);
-    return (minutesDiff * 60) + secondsDiff
+  const minutesDiff = stopMinutes - startMinutes;
+  const secondsDiff = stopSeconds - startSeconds;
+
+  return minutesDiff * 60 + secondsDiff;
 }
 
-measureSolveTime(printRiddle,riddle2)
+// measureSolveTime(printRiddle,riddle2)
 // printRiddle(riddle2);
