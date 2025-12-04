@@ -14,11 +14,19 @@ function GameFlow() {
   }
 
   // filter by specific difficulty
+  const difficultyArr = ["hard", "easy", "medium"];
   const spesificDifficult = input(
     "Do you want to play a spesific difficult? [hard,easy or medium]:"
   ).toLowerCase();
   if (spesificDifficult) {
-    riddles = riddles.filter((riddle) => riddle.difficulty.toLocaleLowerCase() === spesificDifficult);
+    let userInputIdx = difficultyArr.findIndex(
+      (difficulty) => difficulty === spesificDifficult.toLocaleLowerCase()
+    );
+    if (userInputIdx > 0) {
+      riddles = riddles.filter(
+        (riddle) => riddle.difficulty.toLocaleLowerCase() === spesificDifficult
+      );
+    }
   }
 
   // filter by start spesific difficulty
@@ -26,9 +34,7 @@ function GameFlow() {
     "DO you want to start from spesific difficulty? [1 (easy),2(medium) or 3(hard)]: "
   );
   if (difficultyStart && Number(difficultyStart) < 4) {
-    console.log(difficultyStart);
-    riddles = riddles.filter((riddle) => riddle.sort === +difficultyStart);
-    console.log(riddles);
+    riddles = riddles.filter((riddle) => riddle.sort >= +difficultyStart);
   }
 
   // createing player
