@@ -6,6 +6,7 @@ export default {
   printRiddle,
   askRiddle,
   measureSolveTime,
+  sortRiddles
 };
 
 function printRiddle(riddleObj, riddleNumber) {
@@ -47,20 +48,13 @@ function askRiddle(riddleObj) {
 }
 
 function measureSolveTime(fn, argument, riddleNumber) {
-  const startMinutes = new Date().getMinutes();
-  const startSeconds = new Date().getSeconds();
+  const startSeconds = new Date().getTime();
   fn(argument, riddleNumber);
-  const stopMinutes = new Date().getMinutes();
-  const stopSeconds = new Date().getSeconds();
-
-  const minutesDiff = stopMinutes - startMinutes;
-  const secondsDiff = stopSeconds - startSeconds;
-
-  return minutesDiff * 60 + secondsDiff;
+  const stopSeconds = new Date().getTime();
+  return (stopSeconds - startSeconds) / 1000;
 }
 
 function sortRiddles(riddles) {
-  riddles.sort((a, b) => a.sort - b.sort)
-
+  riddles.sort((a, b) => a.sort - b.sort);
+  return riddles
 }
-
